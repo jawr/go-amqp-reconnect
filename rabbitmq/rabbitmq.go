@@ -59,8 +59,8 @@ func (c *Connection) Channel() (*Channel, error) {
 }
 
 // Dial wrap amqp.Dial, dial and get a reconnect connection
-func Dial(url string) (*Connection, error) {
-	conn, err := amqp.Dial(url)
+func Dial(url string, cfg amqp.Config) (*Connection, error) {
+	conn, err := amqp.DialConfig(url, cfg)
 	if err != nil {
 		return nil, err
 	}
